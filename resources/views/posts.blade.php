@@ -1,14 +1,11 @@
-<!doctype html>
-<title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
+
+@extends ('layout')
+    @section('content')
 
 
-
-<body>
-    <?php foreach ($posts as $post) : ?>
+    @foreach ($posts as $post)
     <article>
-        <?= $post; ?>
+        {!! $post !!}
     </article>
-    <?php endforeach; ?>
-
-</body>
+    @endforeach
+    @endsection
