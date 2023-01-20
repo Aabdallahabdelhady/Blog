@@ -13,15 +13,12 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    $posts=Post::all();
     return view('posts',[
-        'posts' => $posts
+        'posts' => Post::all()
     ]);
 });
-Route::get('/posts/{post}', function($slug) {
-    //Find post by ot slug and pass it to view called post
-    $post= Post::find($slug);
+Route::get('/posts/{post}', function($id) {
     return view('post',[
-    'post'=>  $post
+    'post'=>  Post::findOrFail($id)
     ]);
-}) ->where('post','[A-z_\-]+');
+});

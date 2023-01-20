@@ -1,20 +1,11 @@
 <?php
-namespace app\Models;
 
-use Illuminate\Database\Eloquent\ModelNotFoundExceotion;
-use Illuminate\Support\Facades\File;
-class Post{
-    public static function all(){
-        $files= File::files(resource_path("/../resources/posts/"));
-        return array_map(fn($file) =>$file ->getContents(), $files);
-    }
+namespace App\Models;
 
-    public static function find($slug){
-        if(! file_exists($path= resource_path("/../resources/posts/{$slug}.html")))
-    {
-        throw ModelNotFoundExceotion();
-    }
-    return $post = cache()->remember("posts.{$slug}",now()->addMinutes(20), fn() => file_get_contents($path));
-    
-    }
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use HasFactory;
 }
