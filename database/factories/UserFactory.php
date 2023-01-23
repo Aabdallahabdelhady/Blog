@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
+use App\Models\User;
 class UserFactory extends Factory
 {
     /**
@@ -12,7 +12,8 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    protected $model = User::class;
+        public function definition()
     {
         return [
             'name' => $this->faker->name(),
